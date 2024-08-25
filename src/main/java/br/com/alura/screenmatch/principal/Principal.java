@@ -87,6 +87,18 @@ public class Principal {
                 .peek(e -> System.out.println("Mapeamento " + e))
                 .forEach(System.out::println);
 
+        System.out.println("Digite um trecho do título do episódio");
+        var trechoTitulo = scanner.nextLine();
+        Optional<Episodio> episodioBuscado = episodios.stream()
+                .filter(e -> e.getTitulo().contains(trechoTitulo))
+                .findFirst();
+        if(episodioBuscado.isPresent()){
+            System.out.println("Episódio encontrado!");
+            System.out.println("Temporada: " + episodioBuscado.get().getTemporada());
+        } else {
+            System.out.println("Episódio não encontrado!");
+        }
+
 
     }
 
