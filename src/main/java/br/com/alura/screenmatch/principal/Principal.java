@@ -21,6 +21,11 @@ public class Principal {
     private ConsumoApi consumo = new ConsumoApi();
 
     public void exibeMenu(){
+        System.out.println("Digite o nome da série para a busca");
+        var nomeSerie = scanner.nextLine();
+        var json = consumo.obterDados(ENDERECO + nomeSerie.replace("", "+") + API_KEY);
+        DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
+        System.out.println(dados);
 
     }
 
