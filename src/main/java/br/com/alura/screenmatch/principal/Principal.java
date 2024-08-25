@@ -26,6 +26,16 @@ public class Principal {
         var json = consumo.obterDados(ENDERECO + nomeSerie.replace("", "+") + API_KEY);
         DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
         System.out.println(dados);
+        List<DadosTemporadas> temporadas = new ArrayList<>();
+
+        for(int i = 1; i<=dados.totalTemporadas(); i++) {
+            json = consumo.obterDados(ENDERECO + nomeSerie.replace("", "+") +"&season=" + i + API_KEY);
+            DadosTemporadas dadosTemporada = conversor.obterDados(json, DadosTemporadas.class);
+            temporadas.add(dadosTemporada);
+
+        }
+        temporadas.forEach(System.out::println);
+
 
     }
 
