@@ -1,11 +1,9 @@
 package br.com.alura.screenmatch.model;
 import br.com.alura.screenmatch.service.ConsultaChatGPT;
 import jakarta.persistence.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalDouble;
-
 @Entity
 @Table(name = "series")
 public class Serie {
@@ -22,8 +20,10 @@ public class Serie {
     private String sinopse;
 
     @Transient
+    @OneToMany(mappedBy = "serie")
     private List<Episodio> episodios = new ArrayList<>();
 
+    public Serie() {}
     public Serie(DadosSerie dadosSerie){
         this.titulo = dadosSerie.titulo();
         this.totalTemporadas = dadosSerie.totalTemporadas();
@@ -33,26 +33,18 @@ public class Serie {
         this.poster = dadosSerie.poster();
         this.sinopse = ConsultaChatGPT.obterTraducao(dadosSerie.sinopse()).trim();
     }
-
-    public Serie() {
-        
-    }
-
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
     }
-
     public List<Episodio> getEpisodios() {
         return episodios;
     }
-
     public void setEpisodios(List<Episodio> episodios) {
         this.episodios = episodios;
     }
-
     public String getTitulo() {
         return titulo;
     }
