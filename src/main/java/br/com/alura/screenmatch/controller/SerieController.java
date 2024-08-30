@@ -24,5 +24,9 @@ public class SerieController {
                 .collect(Collectors.toList());
     }
 
+    @GetMapping("/inicio")
+    public String retornarInicio() {
+        return "Bem-vindo ao Screenmatch!";
+    }
 }
 
