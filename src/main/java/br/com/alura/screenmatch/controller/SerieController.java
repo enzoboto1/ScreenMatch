@@ -22,9 +22,5 @@ public class SerieController {
         return servico.obterTodasAsSeries();
     }
 
-    @GetMapping("/inicio")
-    public String retornarInicio() {
-        return "Bem-vindo ao Screenmatch!";
-    }
 }
 
