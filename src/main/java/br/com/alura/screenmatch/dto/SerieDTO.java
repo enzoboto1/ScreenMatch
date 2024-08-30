@@ -1,4 +1,5 @@
 package br.com.alura.screenmatch.dto;
 
-public class SerieDTO {
+public record SerieDTO() {
+
 }
