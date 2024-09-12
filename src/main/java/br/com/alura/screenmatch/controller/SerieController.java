@@ -15,7 +15,6 @@ import java.util.List;
 public class SerieController {
 
     private SerieService servico;
-
     public SerieController(SerieService servico){
         this.servico = servico;
     }
